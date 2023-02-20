@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<link rel="icon" type="image/x-icon" href="/images/fireemoji2.ico">
+	<title>Steves Art</title>
+	<link rel="stylesheet" href="./css/style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script>
+	
+	function openNav() {
+	  document.getElementById("mySidenav").style.width = "70%";
+	  
+	  document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+	}
+
+	function closeNav() {
+	  document.getElementById("mySidenav").style.width = "0";
+	 
+	  document.body.style.backgroundColor = "black";
+	}
+	
+	function liveSearch() {
+	  // Locate the card elements
+	  let cards = document.querySelectorAll('#artwork')
+	  // Locate the search input
+	  let search_query = document.getElementById("searchbox").value;
+	  // Loop through the cards
+	  for (var i = 0; i < cards.length; i++) {
+		// If the text is within the card...
+		if(cards[i].innerText.toLowerCase()
+		  // ...and the text matches the search query...
+		  .includes(search_query.toLowerCase())) {
+			// ...remove the `.is-hidden` class.
+			cards[i].classList.remove("is-hidden");
+		} else {
+		  // Otherwise, add the class.
+		  cards[i].classList.add("is-hidden");
+		}
+	  }
+	}
+	
+	</script>
+
+</head>
+
+<body>
+
+<%- include("../helpers/top") %>
+
+<div class="block100"><img src="images/LogomainTFT.png" title="ProvidedByIllimited&Co" class="main-logo"></img>
+
+<br>
+<h1>Our Gallery
+</h1>
+
+<div class="main-block" style="margin-top:3%;">
+	<div class="block70">
+		<div class="col-display">
+			<input type="text" class="input-base" placeholder="Looking for something specific?" id="searchbox"/>
+			<button class="button-cia" id="hover" style="margin-bottom:5%;" onclick="liveSearch()"><h2>Search</h2></button>
+		</div>
+	</div>
+</div>
+<br>
+<% if (showcase) { %>
+<div class="main-block">
+<div class="col-display" style="width:100%;">
+<% for (let i = showcase._gallery.length-1; i>-1; i--){ %>
+	<div class="rounded-border" id="artwork">
+		<div class="col-display">
+			<div class="row-display">
+				<div class="block25"></div>
+				<div class="block50"><h2><%= showcase._gallery[i]._title %></h2></div>
+				<div class="block25"></div>
+			</div>
+			<div class="row-display">
+				<div class="block50"><h3><%= showcase._gallery[i]._client %></h3></div>
+				<div class="block50"><h3><%= showcase._gallery[i]._datecreated %></h3></div>
+			</div>
+			<div class="block100"><img src="<%= showcase._gallery[i]._path %>" id="imageholder" alt="SteveCreativeInkandArtOostende" class="galleryartwork"></img></div>
+			<div class="row-display">
+			<div class="block5"></div>
+				<div class="block90">
+				<div class="wrap">
+				<h3><%= showcase._gallery[i]._description %></h3>
+				</div>
+				</div>
+			<div class="block5"></div>
+			</div>
+		</div>
+	</div>
+	<br>
+<% } %>
+</div>
+</div>
+<% } %>
+<br><br>
+
+<%- include("../helpers/bottom") %>
+
+</body>
+</html> 

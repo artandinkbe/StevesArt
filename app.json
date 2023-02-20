@@ -1,0 +1,8 @@
+{
+  "name": "MY PAPP by CONID",
+  "description": "A barebones Node.js app using Express 4",
+  "repository": "foobase",
+  "logo": "",
+  "keywords": ["node", "express", "static", "firebase"],
+  "image": "heroku/nodejs"
+}

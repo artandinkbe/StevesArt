@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<link rel="icon" type="image/x-icon" href="/images/fireemoji2.ico">
+	<title>Contact</title>
+	<link rel="stylesheet" href="./css/style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script>
+	
+	function openNav() {
+	  document.getElementById("mySidenav").style.width = "70%";
+	  
+	  document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+	}
+
+	function closeNav() {
+	  document.getElementById("mySidenav").style.width = "0";
+	 
+	  document.body.style.backgroundColor = "black";
+	}
+	
+	</script>
+
+</head>
+
+<body>
+
+<%- include("../helpers/top") %>
+<div class="block100"><img src="images/LogomainTFT.png" title="ProvidedByIllimited&Co" class="main-logo"></img>
+
+
+<br>
+
+	<% if (success) { %>
+		<% if (success != "") { %>
+			<div class="flash success"><h1><span style="color:lightgreen;"><%= success %></span></h1></div>
+		<% } else if (success === "") { %>
+			<div class="flash error"><%= "" %></div>
+		<% } %>
+	<% } %>
+
+<h1>STEVES ART</h1><h3>Hoe te contacteren:</h3>
+
+<div class="main-block">
+	<div class="rounded-border">
+		<div class="col-display" id="sideways">
+			<div class="block30" id="mobilegrote">
+			<div class="col-display">
+				<div class="row-display">
+					<div class="block100"><h2 class="title-aligned-center">Telephone:</h2></div>
+
+				</div>
+				<div class="row-display" style="text-align:center">
+					<a href="tel:+320496171611"><span>0496 17 16 11</span></a>
+				</div>
+			</div>
+			</div>
+			<br>
+			
+			<div class="block30" id="mobilegrote">
+			<div class="col-display">
+				<div class="row-display">
+					<div class="block100"><h2 class="title-aligned-center">Email:</h2></div>
+
+				</div>
+				<div class="row-display">
+					<a href="mailto:artandink.be@gmail.com"><span>artandink.be@gmail.com</span></a>
+				</div>
+			</div>
+			</div>
+			<br>
+			<div class="block30" id="mobilegrote">
+			<div class="col-display">
+				<div class="row-display">
+					<div class="block100"><h2 class="title-aligned-center">Contact Form:</h2></div>
+
+				</div>
+				<div class="row-display" style="justify-content:center;">
+				
+					<div class="block80"><a href="#contactform"><button class="button-cia" id="hover"><h3>Contact</h3></button></a></div>
+					<div class="block10"></div>
+					<div class="block10"></div>
+					
+				</div>
+			</div>
+			</div>
+			
+		</div>
+	</div>
+</div>
+
+<br><br>
+<h1>Onze Locatie</h1>
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1249.9066385742435!2d2.8627521531081923!3d51.20409221382027!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47dca58bad270be7%3A0xe319b5d455665b15!2sCREATIVE%20ART%20AND%20INK!5e0!3m2!1sen!2sbe!4v1676067450687!5m2!1sen!2sbe" width="90%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+<br><br>
+
+<div class="main-block" id="contactform">
+<div class="rounded-border">
+<form action="/contactartist" method="POST">
+	<div class="col-display">
+		<div class="block100"></div>
+		<div class="row-display">
+			<div class="block50"><h2 class="title-aligned-center">Naam:</h2></div>
+			<div class="block50"><h2 class="title-aligned-center">Email:</h2></div>
+		</div>
+		<div class="row-display">
+			<div class="block50"><input type="text" name="clientname" placeholder="Naam" class="input-base-cia"></input></div>
+			<div class="block50"><input type="text" name="clientemail" placeholder="Email Address" class="input-base-cia"></input></div>
+		</div>
+		<div class="block100">
+			<h2 class="title-aligned-center">Stel Uw Vraag:</h2>
+		</div>
+		<div class="block100">
+			<textarea name="clientmessage" class="input-base-cia-95" style="height:30vh;" placeholder="Hallo, mijn naam is Steve! Hoe kan ik u helpen? Voor info stel uw vraag en wees zo compleet mogelijk! Ik antwoord zo snel als ik kan."></textarea>
+		</div>
+		<div class="block100">
+			<button type="submit" class="button-cia-100" id="hover"><h2>Submit</h2></button>
+		</div>
+	</div>
+</form>
+</div>
+</div>
+<br>
+<%- include("../helpers/bottom") %>
+
+</body>
+</html> 

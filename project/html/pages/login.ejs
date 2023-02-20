@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<link rel="icon" type="image/x-icon" href="/images/fireemoji2.ico">
+	<title>Steves Art</title>
+	<link rel="stylesheet" href="./css/style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script>
+	
+	function openNav() {
+	  document.getElementById("mySidenav").style.width = "70%";
+	  
+	  document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+	}
+
+	function closeNav() {
+	  document.getElementById("mySidenav").style.width = "0";
+	 
+	  document.body.style.backgroundColor = "black";
+	}
+	
+	</script>
+
+</head>
+
+<body>
+
+<%- include("../helpers/top") %>
+<div class="block100"><img src="images/LogomainTFT.png" title="ProvidedByIllimited&Co" class="main-logo"></img>
+
+
+<br>
+<h1>CREATIVE INK AND ART</h1><h3>" Admin Area "</h3>
+
+<div class="main-block">
+
+	<div class="block25">
+		<div class="flashes">
+		  <% if (userexists) { %>
+			<% if (userexists != "") { %>
+			  <div class="flash success"><%= userexists %></div>
+			<% } else if (userexists == "") { %>
+			  <div class="flash error"><%= " " %></div>
+			<% } %>
+		  <% } %>
+		  
+		  <% if (usermsg) { %>
+			<% if (usermsg != "") { %>
+			  <div class="flash success"><%= usermsg %></div>
+			<% } else if (usermsg == "") { %>
+			  <div class="flash error"><%= " " %></div>
+			<% } %>
+		  <% } %>
+		  
+		  <% if (errormsg) { %>
+			<% if (errormsg != "") { %>
+			  <div class="flash success"><%= errormsg %></div>
+			<% } else if (errormsg == "") { %>
+			  <div class="flash error"><%= " " %></div>
+			<% } %>
+		  <% } %>		  
+		
+		<% if (newpw) { %>
+			<% if (newpw != "") { %>
+			  <div class="flash success"><%= newpw %></div>
+			<% } else if (newpw == "") { %>
+			  <div class="flash error"><%= " " %></div>
+			<% } %>
+		  <% } %>	
+		  </div>	  
+
+			<div class="form-group">
+				<form id="form" method="POST" action="/login">
+					<input type="text" name="username" placeholder="Username" required="" class="input-base"><br/>
+					<input type="password" name="password" placeholder="Password" required="" class="input-base"><br/>
+					
+					<button type="submit" class="button-cia" id="hover"><h2>Login</h2></button>
+				</form>
+			</div>
+		</div>
+	</div>
+
+<%- include("../helpers/bottom") %>
+
+</body>
+</html> 
