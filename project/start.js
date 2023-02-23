@@ -119,11 +119,12 @@ app.post("/uploadartwork", async (req, res) => {
 		   if (err) throw err;
 		})
 		
-		let thebuff = req.files.artwork;
+		let thebuff = req.files.artwork.data;
 		let imgtype = req.files.artwork.mimetype;
 		
 		function hexToBase64(thebuff) {
-			return btoa(unescape(encodeURIComponent(thebuff)));
+			let a = thebuff.toString('base64');
+			return a;
 		}
 		
 		var artworkbase = { 
@@ -136,7 +137,7 @@ app.post("/uploadartwork", async (req, res) => {
 			_artworkid: artworkid,
 			_img: thebuff,
 			_mimetype: imgtype,
-			
+			_b64: hexToBase64(thebuff),
 			
 		}
 
@@ -355,6 +356,5 @@ async function OnChecker(){
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
-
 
 
