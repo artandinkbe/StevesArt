@@ -78,7 +78,11 @@
 				<div class="block50"><h3><%= showcase._gallery[i]._client %></h3></div>
 				<div class="block50"><h3><%= showcase._gallery[i]._datecreated %></h3></div>
 			</div>
-			<div class="block100"><img src="<%= showcase._gallery[i]._path %>" id="imageholder" alt="SteveCreativeInkandArtOostende" class="galleryartwork"></img></div>
+			<div class="block100">
+	
+			
+		<img src="data:<%= showcase._gallery[i]._mimetype %>;base64,<%= showcase._gallery[i]._b64 %>" id="imageholder" alt="SteveCreativeInkandArtOostende" class="galleryartwork"></img></div>
+			
 			<div class="row-display">
 			<div class="block5"></div>
 				<div class="block90">
