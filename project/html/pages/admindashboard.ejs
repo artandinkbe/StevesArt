@@ -13,7 +13,6 @@
 	  
 	  document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
 	}
-
 	function closeNav() {
 	  document.getElementById("mySidenav").style.width = "0";
 	 
@@ -54,7 +53,7 @@ Gallery bellow
 <br>
 <% if (result) { %>
 <div class="main-block">
-<div class="col-display">
+<div class="col-display" style="width:100%">
 <% for (let i = result._gallery.length-1; i>-1; i--){ %>
 	<div class="rounded-border-gallery" id="artwork" style="width:90%;">
 		<div class="col-display">
@@ -67,7 +66,9 @@ Gallery bellow
 				<div class="block50"><h3><%= result._gallery[i]._client %></h3></div>
 				<div class="block50"><h3><%= result._gallery[i]._datecreated %></h3></div>
 			</div>
-			<div class="block100"><img src="<%= result._gallery[i]._path %>" id="imageholder" alt="SteveCreativeInkandArtOostende" class="galleryartwork"></img></div>
+			<div class="block100">
+			<img src="data:<%= result._gallery[i]._mimetype %>;base64,<%= result._gallery[i]._b64 %>" id="imageholder" alt="SteveCreativeInkandArtOostende" class="galleryartwork"></img>
+			</div>
 			<div class="row-display">
 			<div class="block5"></div>
 				<div class="block90">
@@ -122,7 +123,6 @@ Gallery bellow
 		</div>
 	<br>
 <% } %>
-
 </div>
 </div>
 <% } %>
