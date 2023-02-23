@@ -12,10 +12,6 @@ const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
 const path = require('path');
 const fileupload = require("express-fileupload");
-const multer = require("multer");
-const {
-  GridFsStorage
-} = require("multer-gridfs-storage");
 
 module.exports = app;
 
