@@ -12,6 +12,10 @@ const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
 const path = require('path');
 const fileupload = require("express-fileupload");
+const multer = require("multer");
+const {
+  GridFsStorage
+} = require("multer-gridfs-storage");
 
 module.exports = app;
 
@@ -119,6 +123,13 @@ app.post("/uploadartwork", async (req, res) => {
 		   if (err) throw err;
 		})
 		
+		let thebuff = req.files.artwork;
+		let imgtype = req.files.artwork.mimetype;
+		
+		function hexToBase64(thebuff) {
+			return btoa(unescape(encodeURIComponent(thebuff)));
+		}
+		
 		var artworkbase = { 
 		
 			_title: title,
@@ -127,11 +138,17 @@ app.post("/uploadartwork", async (req, res) => {
 			_client: client,
 			_path: displaypath,
 			_artworkid: artworkid,
+			_img: thebuff,
+			_mimetype: imgtype,
 			
 			
 		}
 
 		stevesDB.updateOne({"_shop": "CIA"}, {$push: { _gallery: artworkbase }});
+		
+		
+			
+	
 		
 		req.flash('success', 'Artwork uploaded!');
 		res.redirect('/galleryupload');
@@ -342,4 +359,6 @@ async function OnChecker(){
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
+
+
 
