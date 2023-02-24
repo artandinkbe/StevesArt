@@ -17,6 +17,10 @@ body {
 	color:white;
 }
 
+#inverted{
+	filter: invert(100%);	
+}
+
 a{
 	color:white;
 }
