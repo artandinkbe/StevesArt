@@ -57,6 +57,13 @@ Gallery bellow
 <% for (let i = result._gallery.length-1; i>-1; i--){ %>
 	<div class="rounded-border-gallery" id="artwork" style="width:90%;">
 		<div class="col-display">
+		<div class="block100">
+			<form action="/deleteentry/<%= result._gallery[i]._artworkid %>/<%= i %>" method="POST">
+				<button type="submit" class="button-base" id="hover">
+					<span style="color:white;">Delete Entry</span>
+				</button>
+			</form>
+		</div>
 			<div class="row-display">
 				<div class="block25"></div>
 				<div class="block50"><h2><%= result._gallery[i]._title %></h2></div>
