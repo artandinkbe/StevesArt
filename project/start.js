@@ -283,7 +283,7 @@ app.post("/contactartist", async (req, res) => {
 					
 	let mailOptions = {
 	  from: 'illimitedenterprise@gmail.com',
-	  to: "zoobazazoo@gmail.com",
+	  to: artistemail,
 	  subject: 'New client contact from CIA!',
 	  text: 'The clients name is: " ' + cn + ' " with the email: ' + '" ' + ce + ' "' + ' saying the following: ' + '" ' + cm + ' "' + "."
 	};
