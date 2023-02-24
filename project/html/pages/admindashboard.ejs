@@ -121,6 +121,64 @@ Gallery bellow
 </div>
 <% } %>
 <br><br>
+<h1>Gallery Upload
+</h1>
+<div class="main-block">
+	<div class="rounded-border">
+		<form action="/uploadartwork/" method="POST" enctype="multipart/form-data">
+			<div class="col-display">
+				<div class="block100">
+					<div class="block10"></div>
+					<div class="block80">
+						<h2 class="title-aligned-center">The Art</h2>
+							<% if (success) { %>
+								<% if (success != "") { %>
+									<div class="flash success"><h4><span style="color:lightgreen;"><%= success %></span></h4></div>
+								<% } else if (success === "") { %>
+									<div class="flash error"><%= "" %></div>
+								<% } %>
+							<% } %>
+							
+							<% if (wrongpw) { %>
+								<% if (wrongpw != "") { %>
+									<div class="flash success"><h4><span style="color:red;"><%= wrongpw %></span></h4></div>
+								<% } else if (wrongpw === "") { %>
+									<div class="flash error"><%= "" %></div>
+								<% } %>
+							<% } %>
+					</div>
+					<div class="block10"></div>
+				</div>
+				<div class="block100">
+					<h2>Title</h2>
+					<input type="text" class="input-base" name="arttitle" style="width:60%;">
+				</div>
+				<div class="block100">
+					<h2>Description</h2>
+					<input type="text" class="input-base" name="artdescription" style="width:60%;">
+				</div>
+				<div class="block100">
+					<h2>Client</h2>
+					<input type="text" class="input-base" name="artclient" style="width:60%;">
+				</div>
+				<div class="block100" id="input-file">
+					<input type="file" name="artwork" accept="image/jpg, jpeg, png, gif" required></input><br>
+				</div>
+				
+				<div class="block100">
+					<h2>Password</h2>
+					<input type="password" class="input-base" name="password" style="width:60%;">
+				</div>
+				<div class="block100" style="margin-top:3%; margin-bottom:3%;">
+					<button type="submit" class="button-base" id="hover" style="min-height:4vh; color:white;">
+						<span>Submit Artwork</span>
+					</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+<br><br>
 
 <%- include("../helpers/bottom") %>
 
