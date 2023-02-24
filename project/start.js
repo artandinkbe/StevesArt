@@ -339,10 +339,11 @@ app.get('/admindashboard', function(req, res) {
 	if (req.session.user){
 		let username = req.session.user;
 		let success = req.flash('success');
+		var wrongpw = req.flash('wrongpw');
 		//console.log("There is req.session...");
 	    stevesDB.findOne({"_username": username}).then(result=>{
 			
-			res.render('pages/admindashboard', {result, success});
+			res.render('pages/admindashboard', {result, success, wrongpw});
 			
 		})
 	}else{
