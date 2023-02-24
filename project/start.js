@@ -235,6 +235,28 @@ app.post("/modifygallery/:artworkid/:entry", async (req, res) => {
 	
 });
 
+app.post("/deleteentry/:artworkid/:entry", async (req, res) => {
+	
+	let entrynr = req.params.entry;
+	
+	let artid = req.params.artworkid;
+	
+	
+	// CHECK THIS BETTER
+	//let deletefunc = '{"_gallery":{"_artworkid":"'+artid+'"}';
+
+
+	//let delfunc = JSON.parse(deletefunc);
+	//console.log(delfunc);
+	
+	stevesDB.updateOne({"_shop":"CIA"}, {$pull: {"_gallery": {"_artworkid": artid}}});
+	
+	
+	req.flash('success', 'Entry deleted!');
+	res.redirect('/admindashboard');
+	
+});
+
 app.post("/contactartist", async (req, res) => {
 	
 	let artistemail = 'artandink.be@gmail.com';
@@ -369,3 +391,4 @@ async function OnChecker(){
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
+
