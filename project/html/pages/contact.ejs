@@ -14,10 +14,6 @@
 
 <%- include("../helpers/top") %>
 
-
-
-<br>
-
 	<% if (success) { %>
 		<% if (success != "") { %>
 			<div class="flash success"><h1><span style="color:lightgreen;"><%= success %></span></h1></div>
@@ -26,10 +22,11 @@
 		<% } %>
 	<% } %>
 
-<h1>STEVES ART</h1><br><h3>Hoe te contacteren:</h3>
+<h1>STEVES ART</h1><br>
+<h2>Hoe te contacteren:</h2>
 
 <div class="main-block">
-	<div class="rounded-border">
+	<div class="rounded-border" style="padding:0;">
 		<div class="col-display" id="sideways">
 			<div class="block30" id="mobilegrote">
 			<div class="col-display">
@@ -37,7 +34,7 @@
 					<div class="block100"><h2 class="title-aligned-center">Telephone:</h2></div>
 
 				</div>
-				<div class="row-display" style="text-align:center">
+				<div class="row-display" id="justified-center">
 					<a href="tel:+320496171611"><span>0496 17 16 11</span></a>
 				</div>
 			</div>
@@ -50,7 +47,7 @@
 					<div class="block100"><h2 class="title-aligned-center">Email:</h2></div>
 
 				</div>
-				<div class="row-display">
+				<div class="row-display" id="justified-center">
 					<a href="mailto:artandink.be@gmail.com"><span>artandink.be@gmail.com</span></a>
 				</div>
 			</div>
@@ -62,11 +59,9 @@
 					<div class="block100"><h2 class="title-aligned-center">Contact Form:</h2></div>
 
 				</div>
-				<div class="row-display" style="justify-content:center;">
+				<div class="row-display" id="justified-center">
 				
-					<div class="block80"><a href="#contactform"><button class="button-cia" id="hover"><h3>Contact</h3></button></a></div>
-					<div class="block10"></div>
-					<div class="block10"></div>
+					<div class="block80"><a href="#contactform"><button class="button-cia" id="hover" style="margin-bottom:3%;"><h3>Contact</h3></button></a></div>
 					
 				</div>
 			</div>
@@ -75,10 +70,6 @@
 		</div>
 	</div>
 </div>
-
-<br><br>
-
-
 
 <br><br>
 <h3>Mijn Social Midia:</h3>
@@ -92,7 +83,7 @@
 					<a href="https://www.facebook.com/people/Creative-art-and-ink/100057428500033/"><img src="images/facebook.png" alt="instagramsocialmediacreativeartandinkoostende" class="social-icons"></a>
 				</div>
 				<div class="block100">
-					<a href="https://www.facebook.com/people/Creative-art-and-ink/100057428500033/"><h3>Facebook</h3></a>
+					<a class="mobile-link" href="https://www.facebook.com/people/Creative-art-and-ink/100057428500033/"><h3>Facebook</h3></a>
 				</div>
 			</div>
 		</div>
@@ -103,7 +94,7 @@
 				<div class="block100" id="socials">
 					<a href="https://www.instagram.com/creativeartandinkbe/"><img src="images/instagram.png" alt="instagramsocialmediacreativeartandinkoostende" class="social-icons"></a>
 				</div><div class="block100">
-					<a href="https://www.instagram.com/creativeartandinkbe/"><h3>Tattoos</h3></a>
+					<a class="mobile-link" href="https://www.instagram.com/creativeartandinkbe/"><h3>Tattoos</h3></a>
 				</div>
 			</div>
 		</div>
@@ -113,7 +104,7 @@
 				<div class="block100" id="socials">
 					<a href="https://www.instagram.com/wavewatcher_be/"><img src="images/instagram2.png" alt="instagramsocialmediacreativeartandinkoostende" class="social-icons"></a>
 				</div><div class="block100">
-					<a href="https://www.instagram.com/wavewatcher_be/"><h3>Drawings & Paintings</h3></a>
+					<a class="mobile-link" href="https://www.instagram.com/wavewatcher_be/"><h3>Drawings & Paintings</h3></a>
 				</div>
 			</div>
 		</div>		
@@ -122,7 +113,7 @@
 </div>
 <br><br>
 <h1>Onze Locatie</h1>
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1249.9066385742435!2d2.8627521531081923!3d51.20409221382027!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47dca58bad270be7%3A0xe319b5d455665b15!2sCREATIVE%20ART%20AND%20INK!5e0!3m2!1sen!2sbe!4v1676067450687!5m2!1sen!2sbe" width="95%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1249.9066385742435!2d2.8627521531081923!3d51.20409221382027!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47dca58bad270be7%3A0xe319b5d455665b15!2sCREATIVE%20ART%20AND%20INK!5e0!3m2!1sen!2sbe!4v1676067450687!5m2!1sen!2sbe" width="90%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 <br><br>
 
 <div class="main-block" id="contactform">
@@ -136,7 +127,7 @@
 		</div>
 		<div class="row-display">
 			<div class="block50"><input type="text" name="clientname" placeholder="Naam" class="input-base-cia"></input></div>
-			<div class="block50"><input type="text" name="clientemail" placeholder="Email Address" class="input-base-cia"></input></div>
+			<div class="block50"><input type="text" name="clientemail" placeholder="Email" class="input-base-cia"></input></div>
 		</div>
 		<div class="block100">
 			<h2 class="title-aligned-center">Stel Uw Vraag:</h2>
