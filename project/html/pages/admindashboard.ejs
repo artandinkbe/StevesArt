@@ -18,22 +18,22 @@
 <br>
 <h1>Welcome <%= result._artist %></h1><h3> Here you can edit gallery entries, and add new ones.</h3>
 <br>
-<div class="block100"><div class="row-display">
-<div class="block20">
-	<a href="#galleryupload"><button class="button-base" id="hover"><span style="color:white"> Gallery Upload </span></button></a>
+<div class="block100">
+<div class="row-display" id="sideways">
+<div class="block20" id="mobilegrote-admin">
+	<a href="#galleryupload"><button class="button-base-admin" id="hover"><span style="color:white"> Gallery Upload </span></button></a>
 </div>
-<div class="block20">
-	<a href="/"><button class="button-base" id="hover"><span style="color:white"> Go to Home </span></button></a>
+<div class="block20" id="mobilegrote-admin">
+	<a href="/"><button class="button-base-admin" id="hover"><span style="color:white"> Go to Home </span></button></a>
 </div>
-<div class="block20">
-	<a href="/about"><button class="button-base" id="hover"><span style="color:white"> Go to About </span></button></a>
+<div class="block20" id="mobilegrote-admin">
+	<a href="/about"><button class="button-base-admin" id="hover"><span style="color:white"> Go to About </span></button></a>
 </div>
-<div class="block20">
-	<a href="/contact"><button class="button-base" id="hover"><span style="color:white"> Go to Contact </span></button></a>
+<div class="block20" id="mobilegrote-admin">
+	<a href="/contact"><button class="button-base-admin" id="hover"><span style="color:white"> Go to Contact </span></button></a>
 </div>
 </div>
 </div>
-
 <br><br><br><br><br>
 	<% if (success) { %>
 		<% if (success != "") { %>
@@ -154,6 +154,7 @@ Gallery bellow
 									<div class="flash error"><%= "" %></div>
 								<% } %>
 							<% } %>
+							
 							<% if (wrongpw) { %>
 								<% if (wrongpw != "") { %>
 									<div class="flash success"><h4><span style="color:red;"><%= wrongpw %></span></h4></div>
