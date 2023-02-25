@@ -6,13 +6,55 @@
 	<title>Steves Art</title>
 	<link rel="stylesheet" href="./css/style.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
 	<script src="js/menu.js"></script>
+	<link rel="stylesheet" href="css/splide.min.css">
+	<script src="js/splide.min.js"></script>
+	<script src="js/splide-extension-auto-scroll.min.js"></script>
+	<script>
+	document.addEventListener( 'DOMContentLoaded', function () {
+	  var main = new Splide( '#main-carousel', {		
+		type      : 'loop',
+		rewind    : true,
+		pagination: false,
+		arrows    : false,
+	  drag   : 'free',
+	  focus  : 'center',
+	  perPage: 1.5,
+	  autoStart:true,
+	  autoScroll: {
+		speed: 5,
+	  },
+	  } );
+
+	  var thumbnails = new Splide( '#thumbnail-carousel', {
+		fixedWidth  : 150,
+		fixedHeight : 150,
+		gap         : 5,
+		rewind      : true,
+		pagination  : false,
+		isNavigation: true,
+		breakpoints : {
+		  600: {
+			fixedWidth : 150,
+			fixedHeight: 150,
+			gap:1,
+		  },
+		},
+	  } );
+
+	  main.sync( thumbnails );
+	  main.mount(window.splide.Extensions);
+	  thumbnails.mount();
+	} );
+	</script>
+	
 </head>
 
 <body>
 
 <%- include("../helpers/top") %>
-<!--<div class="block100"><img src="images/LogomainTFT.png" title="ProvidedByIllimited&Co" class="main-logo" id="inverted"></img> -->
+<div class="block100"><img src="images/LogomainTFT.png" title="ProvidedByIllimited&Co" class="main-logo"></img>
 
 <br>
 <h1>STEVES ART</h1><h3>" YOUR ARTSHOP ! "</h3>
@@ -76,6 +118,47 @@ AANGAANDE EEN TATTOO EN OM U HET BEST TE KUNNEN BEDIENEN EN HET MINST GESTOORD T
 		</div>
 	</div>
 </div>
+<br><br>
+<section id="main-carousel" class="splide" aria-label="Beautiful Images">
+  <div class="splide__track">
+		<ul class="splide__list">
+			<li class="splide__slide">
+				<img src="images/slideshow1.jpeg" alt="">
+			</li>
+			<li class="splide__slide">
+				<img src="images/slideshow2.jpg" alt="">
+			</li>
+			<li class="splide__slide">
+				<img src="images/slideshow3.jpg" alt="">
+			</li>
+			<li class="splide__slide">
+				<img src="images/slideshow4.jpg" alt="">
+			</li>
+		</ul>
+  </div>
+</section>
+<section
+  id="thumbnail-carousel"
+  class="splide"
+  aria-label="The carousel with thumbnails. Selecting a thumbnail will change the Beautiful Gallery carousel."
+>
+  <div class="splide__track">
+		<ul class="splide__list" id="splide_list_thumb">
+			<li class="splide__slide">
+				<img src="images/slideshow1.jpeg" alt="">
+			</li>
+			<li class="splide__slide">
+				<img src="images/slideshow2.jpg" alt="">
+			</li>
+			<li class="splide__slide">
+				<img src="images/slideshow3.jpg" alt="">
+			</li>
+			<li class="splide__slide">
+				<img src="images/slideshow4.jpg" alt="">
+			</li>
+		</ul>
+  </div>
+</section>
 <br><br>
 <h3>Mijn Social Midia:</h3>
 
