@@ -259,6 +259,18 @@ h1, h2, h3, h4, h5, h6{
 	margin-right:auto;
 }
 
+.button-base-admin{
+	width:100%;
+	padding:2%;
+	font-size:115%;
+	background-color:transparent;
+	border:solid white 2px;
+	border-radius:12px;
+	min-height:8vh;
+	margin-left:auto;
+	margin-right:auto;
+}
+
 .title-aligned-center{
 	border-bottom:solid white 2px;
 }
@@ -414,14 +426,49 @@ h1, h2, h3, h4, h5, h6{
   opacity: 1;
 }
 
-.splide{
-	text-align:center;
-}
+.splide{text-align:center;}
 
 .topdiv{
-		margin-top:3%;
-	}
+	margin-top:3%;
+}
 
+#justified-center{
+	justify-content:center;
+}
+
+#justified-left{
+	justify-content:left;
+	display:flex;
+}
+
+#justified-right{
+	justify-content:right;
+	display:flex;
+}
+
+#mobile-image{
+	margin-left:100%;
+	margin-right:100%;
+}
+
+#mobile-set{
+	width:80%; 
+	margin-bottom:2%; 
+	border-bottom:solid white 2px; 
+	justify-content:center;
+}
+
+#title-mobile{
+	margin-bottom:2%;
+}
+
+#mobile-slideshowa{
+	width:50%;
+}
+
+#mobile-slideshowb{
+	width:70%;
+}
 
 @media only screen and (min-width: 100px) and (max-width: 600px) {
 
@@ -469,7 +516,12 @@ h1, h2, h3, h4, h5, h6{
 	}
 	
 	#mobilegrote{
+		width:100%;
+	}
+	
+	#mobilegrote-admin{
 		width:90%;
+		margin-bottom:3%;
 	}
 	
 	#imageholderprofile{
@@ -525,7 +577,8 @@ h1, h2, h3, h4, h5, h6{
 
 	.logo-top{
 			margin-left:20%;
-			width:60%;	
+			width:60%;
+			
 	}
 	
 	.topdiv{
@@ -537,5 +590,36 @@ h1, h2, h3, h4, h5, h6{
 	  height: auto;
 	  object-fit: cover;
 	}
+
+	#justified-center{
+		justify-content:center;
+	}
+
+	#mobile-image{
+		width:70%;
+		margin:0;
+	}
+
+	#mobile-set{
+		width:90%; 
+		margin-bottom:5%; 
+		border-bottom:solid white 2px; 
+		justify-content:center;
+		
+	}
 	
+	#title-mobile{
+		margin:0;
+	}
+	
+	#mobile-slideshowa{
+		width:90%;
+	}
+	
+	#mobile-slideshowb{
+		width:100%;
+	}
+
+	
+
 }
