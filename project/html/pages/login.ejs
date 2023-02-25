@@ -13,13 +13,15 @@
 <body>
 
 <%- include("../helpers/top") %>
+<div class="block100"><img src="images/LogomainTFT.png" title="ProvidedByIllimited&Co" class="main-logo"></img>
+
 
 <br>
 <h1>CREATIVE INK AND ART</h1><h3>" Admin Area "</h3>
 
 <div class="main-block">
 
-	<div class="block25">
+	<div class="block70">
 		<div class="flashes">
 		  <% if (userexists) { %>
 			<% if (userexists != "") { %>
@@ -54,17 +56,16 @@
 		  <% } %>	
 		  </div>	  
 
-			<div class="form-group">
-				<form id="form" method="POST" action="/login">
-					<input type="text" name="username" placeholder="Username" required="" class="input-base"><br/>
-					<input type="password" name="password" placeholder="Password" required="" class="input-base"><br/>
-					
-					<button type="submit" class="button-cia" id="hover"><h2>Login</h2></button>
-				</form>
-			</div>
+
+			<form id="form" method="POST" action="/login">
+				<input type="text" name="username" placeholder="Username" required="" class="input-base"><br/>
+				<input type="password" name="password" placeholder="Password" required="" class="input-base"><br/>
+				
+				<button type="submit" class="button-cia" id="hover"><h2>Login</h2></button>
+			</form>
 		</div>
 	</div>
-
+<br><br>
 <%- include("../helpers/bottom") %>
 
 </body>
