@@ -9,6 +9,7 @@
 	<script src="js/menu.js"></script>
 	<script>
 	
+	
 	function liveSearch() {
 	  // Locate the card elements
 	  let cards = document.querySelectorAll('#artwork')
@@ -36,17 +37,13 @@
 <body>
 
 <%- include("../helpers/top") %>
-
-
-
-<br>
-<h1>Our Gallery
+<h1>The Gallery
 </h1>
 
 <div class="main-block" style="margin-top:3%;">
 	<div class="block70">
 		<div class="col-display">
-			<input type="text" class="input-base" placeholder="Looking for something specific?" id="searchbox"/>
+			<input type="text" class="input-base" style="font-size:75%" placeholder="Looking for something specific?" id="searchbox"/>
 			<button class="button-cia" id="hover" style="margin-bottom:5%;" onclick="liveSearch()"><h2>Search</h2></button>
 		</div>
 	</div>
