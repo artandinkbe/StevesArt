@@ -88,10 +88,16 @@ app.get('/gallery', async (req, res) => {
 	})
 });
 
+
+
 app.get('/galleryupload', async (req, res) => {
 	var success = req.flash('success');
 	var wrongpw = req.flash('wrongpw');
-	res.render('pages/galleryupload', {success, wrongpw});
+	stevesDB.findOne({"_username": adminpw}).then(result=>{
+			let lepw = result._username;
+			
+		res.render('pages/galleryupload', {success, wrongpw, lepw});
+	})
 });
 
 app.get('/location', async (req, res) => {
@@ -156,13 +162,69 @@ app.post("/uploadartwork", async (req, res) => {
 	
 });
 
+app.post("/slideshowupload", async (req, res) => {
+	
+	var artworkid = crypto.randomBytes(20).toString('hex');
+	
+	let target_file = req.files.slideartwork;
+
+	var file_name = "stevesart"+target_file.name;
+	var path = __dirname + '\\images\\uploads\\' + file_name;
+	var displaypath = '/images/uploads/' + file_name;
+	// target_file.mv(path, callback)
+	target_file.mv(path, (err) => {
+	   if (err) throw err;
+	})
+	
+	let thebuff = target_file.data;
+	let imgtype = target_file.mimetype;
+	
+	function hexToBase64(thebuff) {
+		let a = thebuff.toString('base64');
+		return a;
+	}
+	
+	var slidebase = { 
+	
+		_datecreated: currentDate,
+		_path: displaypath,
+		_artworkid: artworkid,
+		_mimetype: imgtype,
+		_b64: hexToBase64(thebuff),
+		
+	}
+
+	stevesDB.updateOne({"_shop": "CIA"}, {$push: { _slideshow: slidebase }});
+
+	req.flash('success', 'Slide uploaded!');
+	res.redirect('/admindashboard');
+
+});
+
+app.get('/test', async (req, res) => {
+	stevesDB.findOne({"_username": adminpw}).then(result=>{
+		let slideshow = result._slideshow;
+		res.render('pages/test', {slideshow});
+	})
+});
+
+app.post("/slideshowremove/:artworkid", async (req, res) => {
+	
+	let artid = req.params.artworkid;
+	
+	stevesDB.updateOne({"_shop":"CIA"}, {$pull: {"_slideshow": {"_artworkid": artid}}});
+	
+	
+	req.flash('success', 'Slide removed!');
+	res.redirect('/admindashboard');
+	
+});
+
 app.post("/modifygallery/:artworkid/:entry", async (req, res) => {
 	
 	let entrynr = req.params.entry;
 	
 	let artid = req.params.artworkid;
-	
-	//console.log(artid);
 
 	let newtitle = req.body.arttitle;
 	let newdescription = req.body.artdescription;
@@ -240,15 +302,7 @@ app.post("/deleteentry/:artworkid/:entry", async (req, res) => {
 	let entrynr = req.params.entry;
 	
 	let artid = req.params.artworkid;
-	
-	
-	// CHECK THIS BETTER
-	//let deletefunc = '{"_gallery":{"_artworkid":"'+artid+'"}';
 
-
-	//let delfunc = JSON.parse(deletefunc);
-	//console.log(delfunc);
-	
 	stevesDB.updateOne({"_shop":"CIA"}, {$pull: {"_gallery": {"_artworkid": artid}}});
 	
 	
@@ -283,7 +337,7 @@ app.post("/contactartist", async (req, res) => {
 					
 	let mailOptions = {
 	  from: 'illimitedenterprise@gmail.com',
-	  to: artistemail,
+	  to: "zoobazazoo@gmail.com",
 	  subject: 'New client contact from CIA!',
 	  text: 'The clients name is: " ' + cn + ' " with the email: ' + '" ' + ce + ' "' + ' saying the following: ' + '" ' + cm + ' "' + "."
 	};
@@ -342,8 +396,9 @@ app.get('/admindashboard', function(req, res) {
 		var wrongpw = req.flash('wrongpw');
 		//console.log("There is req.session...");
 	    stevesDB.findOne({"_username": username}).then(result=>{
+			let lepw = result._username;
 			
-			res.render('pages/admindashboard', {result, success, wrongpw});
+			res.render('pages/admindashboard', {result, success, wrongpw, lepw});
 			
 		})
 	}else{
@@ -392,4 +447,5 @@ async function OnChecker(){
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
+
 
