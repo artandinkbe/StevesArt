@@ -344,8 +344,8 @@ h1, h2, h3, h4, h5, h6{
 
 #hover:hover{
 	background-color:#191919;
-	border:solid white 2px;
 	color:black;
+	border-radius:16px;
 }
 
 #hover{
@@ -542,7 +542,7 @@ h1, h2, h3, h4, h5, h6{
 }
 
 #myBtn:hover {
-  background-color: #555;
+  background-color: gray;
 }
 
 ::-webkit-scrollbar {
@@ -564,6 +564,21 @@ h1, h2, h3, h4, h5, h6{
 ::-webkit-scrollbar-thumb:hover {
   border-radius: 10px;
   background:gray;
+}
+
+.web-sized{
+	height:150px;
+	width:auto;
+	margin-right:5%!important;
+}
+#mobile-sized{
+	height:60px;
+	width:auto;
+	margin-right:3%!important;
+}
+
+.legal-text{
+	line-height:4vh;
 }
 
 @media only screen and (min-width: 100px) and (max-width: 600px) {
@@ -765,4 +780,8 @@ h1, h2, h3, h4, h5, h6{
 		width:100%;
 		height:auto;
 	}
+	
+	.legal-text{
+		line-height:5vh;
+	}	
 }
