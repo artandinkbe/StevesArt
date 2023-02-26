@@ -137,25 +137,14 @@ Steve</span>
 <br><br>
 <section id="main-carousel" class="splide" aria-label="Beautiful Images">
   <div class="splide__track">
-		<ul class="splide__list">
-			<li class="splide__slide">
-				<img src="images/slideshow1.jpeg" alt="">
-			</li>
-			<li class="splide__slide">
-				<img src="images/slideshow2.jpg" alt="">
-			</li>
-			<li class="splide__slide">
-				<img src="images/slideshow3.jpg" alt="">
-			</li>
-			<li class="splide__slide">
-				<img src="images/slideshow4.jpg" alt="">
-			</li>
-			<li class="splide__slide">
-				<img src="images/slideshow5.jpg" id="mobile-slideshowa" alt="">
-			</li>
-			<li class="splide__slide">
-				<img src="images/slideshow6.jpg" id="mobile-slideshowb" alt="">
-			</li>
+		<ul class="splide__list" style="items-align:center;">
+		<% if(slideshow){ %>
+			<% for (i = 0; i<slideshow.length; i++){ %>
+				<li class="splide__slide">
+					<img src="data:<%= slideshow[i]._mimetype %>;base64,<%= slideshow[i]._b64 %>" class="<%= slideshow[i]._c %>" id="<%= slideshow[i]._id %>" alt="SteveCreativeInkandArtOostende"></img>
+				</li>
+			<% } %>
+		<% } %>
 		</ul>
   </div>
 </section>
@@ -167,24 +156,13 @@ Steve</span>
 >
   <div class="splide__track">
 		<ul class="splide__list" id="splide_list_thumb">
-			<li class="splide__slide">
-				<img src="images/slideshow1.jpeg" alt="">
-			</li>
-			<li class="splide__slide">
-				<img src="images/slideshow2.jpg" alt="">
-			</li>
-			<li class="splide__slide">
-				<img src="images/slideshow3.jpg" alt="">
-			</li>
-			<li class="splide__slide">
-				<img src="images/slideshow4.jpg" alt="">
-			</li>
-			<li class="splide__slide">
-				<img src="images/slideshow5.jpg" alt="">
-			</li>
-			<li class="splide__slide">
-				<img src="images/slideshow6.jpg" alt="">
-			</li>
+		<% if(slideshow){ %>
+			<% for (i = 0; i<slideshow.length; i++){ %>
+				<li class="splide__slide">
+					<img src="data:<%= slideshow[i]._mimetype %>;base64,<%= slideshow[i]._b64 %>" alt="SteveCreativeInkandArtOostende"></img>
+				</li>
+			<% } %>
+		<% } %>
 		</ul>
   </div>
 </section>
