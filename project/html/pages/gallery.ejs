@@ -52,28 +52,28 @@
 <% if (showcase) { %>
 <div class="main-block">
 <div class="col-display" style="width:100%;">
-<% for (let i = showcase._gallery.length-1; i>-1; i--){ %>
+<% for (let i = showcase.length-1; i>-1; i--){ %>
 	<div class="rounded-border" id="artwork">
 		<div class="col-display">
 			<div class="row-display">
 				<div class="block25"></div>
-				<div class="block50"><h2><%= showcase._gallery[i]._title %></h2></div>
+				<div class="block50"><h2><%= showcase[i]._title %></h2></div>
 				<div class="block25"></div>
 			</div>
 			<div class="row-display">
-				<div class="block50"><h3><%= showcase._gallery[i]._client %></h3></div>
-				<div class="block50"><h3><%= showcase._gallery[i]._datecreated %></h3></div>
+				<div class="block50"><h3><%= showcase[i]._client %></h3></div>
+				<div class="block50"><h3><%= showcase[i]._datecreated %></h3></div>
 			</div>
 			<div class="block100">
 	
 			
-		<img src="data:<%= showcase._gallery[i]._mimetype %>;base64,<%= showcase._gallery[i]._b64 %>" id="imageholder" alt="SteveCreativeInkandArtOostende" class="galleryartwork"></img></div>
+		<img src="data:<%= showcase[i]._mimetype %>;base64,<%= showcase[i]._b64 %>" id="imageholder" alt="SteveCreativeInkandArtOostende" class="galleryartwork"></img></div>
 			
 			<div class="row-display">
 			<div class="block5"></div>
 				<div class="block90">
 				<div class="wrap">
-				<h3><%= showcase._gallery[i]._description %></h3>
+				<h3><%= showcase[i]._description %></h3>
 				</div>
 				</div>
 			<div class="block5"></div>
