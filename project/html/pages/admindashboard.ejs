@@ -247,7 +247,38 @@ Gallery bellow
 				<div class="block100" id="input-file">
 					<input type="file" name="slideartwork" accept="image/jpg, jpeg, png, gif" required></input><br>
 				</div>
-				
+				<div class="block100">
+				<h5 style="margin:0;margin-top:2%;">If web resize is needed</h5>
+				<select name="classpic" id="classpic">
+				<option value="default"><span>Default</span></option>
+				<option value="web-slideshow10"><span>10%</span></option>
+				<option value="web-slideshow20"><span>20%</span></option>
+				<option value="web-slideshow30"><span>30%</span></option>
+				<option value="web-slideshow40"><span>40%</span></option>
+				<option value="web-slideshow50"><span>50%</span></option>
+				<option value="web-slideshow60"><span>60%</span></option>
+				<option value="web-slideshow70"><span>70%</span></option>
+				<option value="web-slideshow80"><span>80%</span></option>
+				<option value="web-slideshow90"><span>90%</span></option>
+				<option value="web-slideshow100"><span>100%</span></option>
+				</select>
+				</div>
+				<div class="block100">
+				<h5 style="margin:0;margin-top:2%;">If mobile resize is needed</h5>
+				<select name="idpic" id="idpic">
+				<option value="default"><span>Default</span></option>
+				<option value="mobile-slideshow10"><span>10%</span></option>
+				<option value="mobile-slideshow20"><span>20%</span></option>
+				<option value="mobile-slideshow30"><span>30%</span></option>
+				<option value="mobile-slideshow40"><span>40%</span></option>
+				<option value="mobile-slideshow50"><span>50%</span></option>
+				<option value="mobile-slideshow60"><span>60%</span></option>
+				<option value="mobile-slideshow70"><span>70%</span></option>
+				<option value="mobile-slideshow80"><span>80%</span></option>
+				<option value="mobile-slideshow90"><span>90%</span></option>
+				<option value="mobile-slideshow100"><span>100%</span></option>
+				</select>
+				</div>
 				<div class="block100" style="margin-top:3%; margin-bottom:3%;">
 					<button type="submit" class="button-base-admin" id="hover" style="min-height:4vh; color:white;">
 						<span>Submit To Slide</span>
@@ -265,18 +296,26 @@ Gallery bellow
 <div class="block100">
 	<h2 class="title-aligned-center" style="margin:0; margin-bottom:2%;">All Slides</h2>
 </div>
-<div class="row-display" style="max-width:100vw;overflow-x:scroll;">
+<div class="row-display" style="max-width:100vw;overflow-x:scroll; border-bottom:solid white 2px;">
 
 <% if(result){ %>
 <% let slideshow = result._slideshow; %>
 <% for (let i = 0; i<slideshow.length; i++){ %>
-	<div class="rounded-border" style="min-width:30vw; margin-left:2%; margin-right:2%; margin-bottom:2%;">
+	<div class="rounded-border" style="height:fit-content;min-width:40vw; margin-left:2%; margin-right:2%; margin-bottom:2%;">
 		<form action="/slideshowremove/<%= slideshow[i]._artworkid %>" method="POST" enctype="multipart/form-data">
 			<div class="col-display">
 				<div class="block90">
 					<img src="data:<%= slideshow[i]._mimetype %>;base64,<%= slideshow[i]._b64 %>" id="small-img-admin" alt="SteveCreativeInkandArtOostende"></img>
 				</div>
 				
+				<div class="block100" style="text-align:center">
+					<h6 style="margin:1%;">Web:</h6>
+					<span><%= slideshow[i]._c %></span>
+				</div>
+				<div class="block100" style="text-align:center">
+					<h6 style="margin:1%;">Mobile:</h6>
+					<span><%= slideshow[i]._id %></span>
+				</div>
 				<div class="block100" style="margin-top:3%; margin-bottom:3%;">
 					<button type="submit" class="button-base-admin" id="hover" style="min-height:4vh; color:white;">
 						<span>Remove Slide</span>
