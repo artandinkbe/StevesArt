@@ -3,7 +3,7 @@
 <head>
 	
 	<link rel="icon" type="image/x-icon" href="/images/fireemoji2.ico">
-	<title>Steves Art</title>
+	<title>Creative Art and Ink</title>
 	<link rel="stylesheet" href="./css/style.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
@@ -55,7 +55,7 @@
 
 <%- include("../helpers/top") %>
 
-<h1>STEVES ART</h1><h3>" YOUR ARTSHOP ! "</h3>
+<h1>Creative Art and Ink</h1><h3>Steves Art Shop</h3>
 
 <div class="main-block">
 	<div class="rounded-border"><div class="wrap">
@@ -125,7 +125,7 @@ Steve</span>
 				</div>
 				<div class="row-display" id="justified-center">
 				
-					<div class="block80"><a href="#contactform"><button class="button-cia" id="hover" style="margin-bottom:3%;"><h3>Contact</h3></button></a></div>
+					<div class="block80"><a href="/contact#contactform"><button class="button-cia" id="hover" style="margin-bottom:3%;"><h3>Contact</h3></button></a></div>
 					
 				</div>
 			</div>
@@ -159,7 +159,7 @@ Steve</span>
 		<% if(slideshow){ %>
 			<% for (i = 0; i<slideshow.length; i++){ %>
 				<li class="splide__slide">
-					<img src="data:<%= slideshow[i]._mimetype %>;base64,<%= slideshow[i]._b64 %>" alt="SteveCreativeInkandArtOostende"></img>
+					<img src="data:<%= slideshow[i]._mimetype %>;base64,<%= slideshow[i]._b64 %>" id="mobile-sized" class="web-sized" alt="SteveCreativeInkandArtOostende"></img>
 				</li>
 			<% } %>
 		<% } %>
@@ -218,34 +218,6 @@ Steve</span>
 <br><br>
 <h1>Onze Locatie</h1>
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1249.9066385742435!2d2.8627521531081923!3d51.20409221382027!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47dca58bad270be7%3A0xe319b5d455665b15!2sCREATIVE%20ART%20AND%20INK!5e0!3m2!1sen!2sbe!4v1676067450687!5m2!1sen!2sbe" width="95%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-<br><br>
-<h1>Contact Shop</h1>
-<div class="main-block" id="contactform">
-<div class="rounded-border">
-<form action="/contactartist" method="POST">
-	<div class="col-display">
-		<div class="block100"></div>
-		<div class="row-display">
-			<div class="block50"><h2 class="title-aligned-center">Naam:</h2></div>
-			<div class="block50"><h2 class="title-aligned-center">Email:</h2></div>
-		</div>
-		<div class="row-display">
-			<div class="block50"><input type="text" name="clientname" placeholder="Naam" class="input-base-cia"></input></div>
-			<div class="block50"><input type="text" name="clientemail" placeholder="Email" class="input-base-cia"></input></div>
-		</div>
-		<div class="block100">
-			<h2 class="title-aligned-center">Stel Uw Vraag:</h2>
-		</div>
-		<div class="block100">
-			<textarea name="clientmessage" class="input-base-cia-95" style="height:30vh;" placeholder="Hallo, mijn naam is Steve! Hoe kan ik u helpen? Voor info stel uw vraag en wees zo compleet mogelijk! Ik antwoord zo snel als ik kan."></textarea>
-		</div>
-		<div class="block100">
-			<button type="submit" class="button-cia-100" id="hover"><h2>Submit</h2></button>
-		</div>
-	</div>
-</form>
-</div>
-</div>
 <br><br>
 <%- include("../helpers/bottom") %>
 
