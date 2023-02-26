@@ -165,6 +165,8 @@ app.post("/uploadartwork", async (req, res) => {
 app.post("/slideshowupload", async (req, res) => {
 	
 	var artworkid = crypto.randomBytes(20).toString('hex');
+	let imgclass = req.body.classpic;
+	let imgid = req.body.idpic;
 	
 	let target_file = req.files.slideartwork;
 
@@ -191,7 +193,8 @@ app.post("/slideshowupload", async (req, res) => {
 		_artworkid: artworkid,
 		_mimetype: imgtype,
 		_b64: hexToBase64(thebuff),
-		
+		_c: imgclass,
+		_id: imgid,
 	}
 
 	stevesDB.updateOne({"_shop": "CIA"}, {$push: { _slideshow: slidebase }});
@@ -447,5 +450,6 @@ async function OnChecker(){
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
+
 
 
