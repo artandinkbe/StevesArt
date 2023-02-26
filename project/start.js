@@ -69,7 +69,12 @@ var adminpw = "stevecia";
 
 
 app.get('/', function(req, res) {
-	res.render('pages/home');
+	
+	stevesDB.findOne({"_shop":"CIA"}).then(result =>{
+		let slideshow = result._slideshow;
+		res.render('pages/home', {slideshow});
+	})
+	
 });
 
 app.get('/about', function(req, res) {
@@ -83,7 +88,8 @@ app.get('/contact', async (req, res) => {
 });
 
 app.get('/gallery', async (req, res) => {
-	stevesDB.findOne({"_shop":"CIA"}).then(showcase=>{
+	stevesDB.findOne({"_shop":"CIA"}).then(result =>{
+		let showcase = result._gallery;
 		res.render('pages/gallery',{showcase});
 	})
 });
@@ -202,13 +208,6 @@ app.post("/slideshowupload", async (req, res) => {
 	req.flash('success', 'Slide uploaded!');
 	res.redirect('/admindashboard');
 
-});
-
-app.get('/test', async (req, res) => {
-	stevesDB.findOne({"_username": adminpw}).then(result=>{
-		let slideshow = result._slideshow;
-		res.render('pages/test', {slideshow});
-	})
 });
 
 app.post("/slideshowremove/:artworkid", async (req, res) => {
