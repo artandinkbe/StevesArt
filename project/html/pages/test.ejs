@@ -4,7 +4,7 @@
 	
 	<link rel="icon" type="image/x-icon" href="/images/fireemoji2.ico">
 	<title>TEST AREA</title>
-	<link rel="stylesheet" href="./css/style.css">
+	
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<script src="js/menu.js"></script>
 	<link rel="stylesheet" href="css/splide.min.css">
@@ -47,6 +47,7 @@
 	  thumbnails.mount();
 	} );
 	</script>
+	<link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
@@ -62,7 +63,7 @@
 		<% if(slideshow){ %>
 			<% for (i = 0; i<slideshow.length; i++){ %>
 				<li class="splide__slide">
-					<img src="data:<%= slideshow[i]._mimetype %>;base64,<%= slideshow[i]._b64 %>" id="slide-imges" alt="SteveCreativeInkandArtOostende"></img>
+					<img src="data:<%= slideshow[i]._mimetype %>;base64,<%= slideshow[i]._b64 %>" class="<%= slideshow[i]._c %>" id="<%= slideshow[i]._id %>" alt="SteveCreativeInkandArtOostende"></img>
 				</li>
 			<% } %>
 		<% } %>
