@@ -43,6 +43,26 @@
 	  document.documentElement.scrollTop = 0;
 	}
 	
+	function liveSearch() {
+	  // Locate the card elements
+	  let cards = document.querySelectorAll('#artwork')
+	  // Locate the search input
+	  let search_query = document.getElementById("searchbox").value;
+	  // Loop through the cards
+	  for (var i = 0; i < cards.length; i++) {
+		// If the text is within the card...
+		if(cards[i].innerText.toLowerCase()
+		  // ...and the text matches the search query...
+		  .includes(search_query.toLowerCase())) {
+			// ...remove the `.is-hidden` class.
+			cards[i].classList.remove("is-hidden");
+		} else {
+		  // Otherwise, add the class.
+		  cards[i].classList.add("is-hidden");
+		}
+	  }
+	}
+	
 	</script>
 </head>
 
@@ -61,10 +81,10 @@
 	<a href="#galleryupload"><button class="button-base-admin" id="hover"><span style="color:white"> Gallery Upload </span></button></a>
 </div>
 <div class="block20" id="mobilegrote-admin">
-	<a href="/"><button class="button-base-admin" id="hover"><span style="color:white"> Go to Home </span></button></a>
+	<a href="#slideshowupload"><button class="button-base-admin" id="hover"><span style="color:white"> Slideshow Upload </span></button></a>
 </div>
 <div class="block20" id="mobilegrote-admin">
-	<a href="#slideshowupload"><button class="button-base-admin" id="hover"><span style="color:white"> Slideshow Upload </span></button></a>
+	<a href="/"><button class="button-base-admin" id="hover"><span style="color:white"> Go to Home </span></button></a>
 </div>
 <div class="block20" id="mobilegrote-admin">
 	<a href="/contact"><button class="button-base-admin" id="hover"><span style="color:white"> Go to Contact </span></button></a>
@@ -232,9 +252,9 @@ Gallery bellow
 	</div>
 </div>
 <br><br>
-<h1>Slideshow Upload
+<h1 id="slideshowupload">Slideshow Upload
 </h1>
-<div class="main-block" id="slideshowupload">
+<div class="main-block">
 	<div class="rounded-border">
 		<form action="/slideshowupload/" method="POST" enctype="multipart/form-data">
 			<div class="col-display">
@@ -291,7 +311,7 @@ Gallery bellow
 <br>
 <h1>Slideshow Remove
 </h1>
-<div class="main-block" id="slideshowupload">
+<div class="main-block">
 <div class="col-display" style="width:100%;">
 <div class="block100">
 	<h2 class="title-aligned-center" style="margin:0; margin-bottom:2%;">All Slides</h2>
