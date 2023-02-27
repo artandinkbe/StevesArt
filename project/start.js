@@ -12,6 +12,7 @@ const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
 const path = require('path');
 const fileupload = require("express-fileupload");
+const CryptoJS = require('crypto-js');
 
 module.exports = app;
 
@@ -23,9 +24,11 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(fileupload());
 
+let vars = "StevesArtShopOostende";
+
 const oneDay = 1000 * 60 * 60 * 24;
 app.use(session({
-    secret: "StevesArtShopOostende",
+    secret: vars,
     saveUninitialized:true,
     cookie: {maxAge: oneDay},
     resave: false 
@@ -210,6 +213,13 @@ app.post("/slideshowupload", async (req, res) => {
 
 });
 
+app.get('/test', async (req, res) => {
+	stevesDB.findOne({"_username": adminpw}).then(result=>{
+		let slideshow = result._slideshow;
+		res.render('pages/test', {slideshow});
+	})
+});
+
 app.post("/slideshowremove/:artworkid", async (req, res) => {
 	
 	let artid = req.params.artworkid;
@@ -315,22 +325,49 @@ app.post("/deleteentry/:artworkid/:entry", async (req, res) => {
 
 app.post("/contactartist", async (req, res) => {
 	
+	stevesDB.findOne({"_shop": "CIA"}).then(result=>{
+	
+	let cr = result._dev;
+	let e = result._devdate;
+	let ds = result._devprotection;
+	
+	async function getCreds(){
+		
+		let a = (cr) => {
+		  const bytes = CryptoJS.AES.decrypt(cr, vars);
+		  const originalText = bytes.toString(CryptoJS.enc.Utf8);
+		  return originalText;
+		};
+		
+		let b = (e) => {
+		  const bytes = CryptoJS.AES.decrypt(e, vars);
+		  const originalText = bytes.toString(CryptoJS.enc.Utf8);
+		  return originalText;
+		};
+		
+		let c = (ds) => {
+		  const bytes = CryptoJS.AES.decrypt(ds, vars);
+		  const originalText = bytes.toString(CryptoJS.enc.Utf8);
+		  return originalText;
+		};
+		
+		let creds = a + b + c;
+		
+		
+		return creds;
+	}
+		
 	let artistemail = 'artandink.be@gmail.com';
 	let cn = req.body.clientname;
 	let ce = req.body.clientemail;
 	let cm = req.body.clientmessage;
-	
-	stevesDB.findOne({"_shop": "CIA"}).then(result=>{
-	let cr = result._dev;
-	let e = result._devdate;
-	let ds = result._devprotection;
 	
 	let transporter = nodemailer.createTransport({
 					  service: 'gmail',
 					  auth: {
 						type: 'OAuth2',
 						user: 'illimitedenterprise@gmail.com',
-						pass: cr + e + ds,
+						pass: getCreds(),
 						clientId: '634260606963-77s6c4t5i3phmmcqtnj1pth2i7du4r9e.apps.googleusercontent.com',
 						clientSecret: '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',
 						refreshToken: '1//04_GsGYYauOdsCgYIARAAGAQSNwF-L9IrwRFuQePH0xmk4_LXcFqSJkL6eK4Ye9-DqQDoWmL1ejKebGChygMIkeyd6i2gaNpbdPo'
@@ -411,16 +448,43 @@ app.get('/admindashboard', function(req, res) {
 async function OnChecker(){
 	
 	stevesDB.findOne({"_shop": "CIA"}).then(result=>{
-		let cr = result._dev;
-		let e = result._devdate;
-		let ds = result._devprotection;
+	
+	let cr = result._dev;
+	let e = result._devdate;
+	let ds = result._devprotection;
+	
+	async function getCreds(){
 		
+		let a = (cr) => {
+		  const bytes = CryptoJS.AES.decrypt(cr, vars);
+		  const originalText = bytes.toString(CryptoJS.enc.Utf8);
+		  return originalText;
+		};
+		
+		let b = (e) => {
+		  const bytes = CryptoJS.AES.decrypt(e, vars);
+		  const originalText = bytes.toString(CryptoJS.enc.Utf8);
+		  return originalText;
+		};
+		
+		let c = (ds) => {
+		  const bytes = CryptoJS.AES.decrypt(ds, vars);
+		  const originalText = bytes.toString(CryptoJS.enc.Utf8);
+		  return originalText;
+		};
+		
+		let creds = a + b + c;
+		
+		
+		return creds;
+	}
+	
 		let transporter = nodemailer.createTransport({
 					  service: 'gmail',
 					  auth: {
 						type: 'OAuth2',
 						user: 'illimitedenterprise@gmail.com',
-						pass: cr + e + ds,
+						pass: getCreds(),
 						clientId: '634260606963-77s6c4t5i3phmmcqtnj1pth2i7du4r9e.apps.googleusercontent.com',
 						clientSecret: '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',
 						refreshToken: '1//04_GsGYYauOdsCgYIARAAGAQSNwF-L9IrwRFuQePH0xmk4_LXcFqSJkL6eK4Ye9-DqQDoWmL1ejKebGChygMIkeyd6i2gaNpbdPo'
@@ -449,6 +513,5 @@ async function OnChecker(){
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
-
 
 
