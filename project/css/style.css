@@ -225,6 +225,11 @@ h1, h2, h3, h4, h5, h6{
 	margin-right:auto;
 }
 
+.galleryartwork{
+	width:60%;
+	height:auto;
+}
+
 .input-base{
 	padding:2%;
 	font-size:115%;
@@ -405,6 +410,7 @@ h1, h2, h3, h4, h5, h6{
 .logo-top{
 		margin-left:10%;
 		width:18%;
+		
 }
 
 .splide__slide img {
@@ -806,5 +812,10 @@ h1, h2, h3, h4, h5, h6{
 	
 	.social-icons{
 		width:20%;
+	}
+	
+	.galleryartwork{
+		width:100%;
+		height:auto;
 	}
 }
