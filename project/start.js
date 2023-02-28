@@ -25,6 +25,9 @@ app.use(express.json());
 app.use(fileupload());
 
 let vars = "StevesArtShopOostende";
+let CID = "634260606963-77s6c4t5i3phmmcqtnj1pth2i7du4r9e.apps.googleusercontent.com";
+let CS = "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";
+let RT = "1//049i1GOK4cEDvCgYIARAAGAQSNwF-L9IrITl98DZ8lmtYo0AUHhlUSHyUg-4xQaC4rJaHt4cPGF0qj0GzzqobmM4JwUC_kLnJChU";
 
 const oneDay = 1000 * 60 * 60 * 24;
 app.use(session({
@@ -368,9 +371,9 @@ app.post("/contactartist", async (req, res) => {
 						type: 'OAuth2',
 						user: 'illimitedenterprise@gmail.com',
 						pass: getCreds(),
-						clientId: '634260606963-77s6c4t5i3phmmcqtnj1pth2i7du4r9e.apps.googleusercontent.com',
-						clientSecret: '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',
-						refreshToken: '1//04_GsGYYauOdsCgYIARAAGAQSNwF-L9IrwRFuQePH0xmk4_LXcFqSJkL6eK4Ye9-DqQDoWmL1ejKebGChygMIkeyd6i2gaNpbdPo'
+						clientId: CID,
+						clientSecret: CS,
+						refreshToken: RT
 					  }
 					});
 					
@@ -485,9 +488,9 @@ async function OnChecker(){
 						type: 'OAuth2',
 						user: 'illimitedenterprise@gmail.com',
 						pass: getCreds(),
-						clientId: '634260606963-77s6c4t5i3phmmcqtnj1pth2i7du4r9e.apps.googleusercontent.com',
-						clientSecret: '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',
-						refreshToken: '1//04_GsGYYauOdsCgYIARAAGAQSNwF-L9IrwRFuQePH0xmk4_LXcFqSJkL6eK4Ye9-DqQDoWmL1ejKebGChygMIkeyd6i2gaNpbdPo'
+						clientId: CID,
+						clientSecret: CS,
+						refreshToken: RT
 					  }
 					});
 		
@@ -513,5 +516,6 @@ async function OnChecker(){
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
+
 
 
