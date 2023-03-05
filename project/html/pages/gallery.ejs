@@ -18,7 +18,7 @@ function liveSearch() {
 
   for (let i = 0; i < a.length; i++) {
     if (a[i].innerText.toLowerCase().includes(s.toLowerCase())) {
-      a[i].classList.remove("is-hidden");
+      //a[i].classList.remove("is-hidden");
       let b = document.createElement('div');
       b.classList.add('rounded-border-gal');
       let c = a[i].querySelector('img');
@@ -73,7 +73,7 @@ function liveSearch() {
       b.appendChild(t);
       d.appendChild(b);
     } else {
-      a[i].classList.add("is-hidden");
+      //a[i].classList.add("is-hidden");
     }
   }
 
