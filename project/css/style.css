@@ -27,6 +27,36 @@ a{
 	display:none;
 }
 
+.gal-search::before {
+  content: attr(title);
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.click-me {
+  position: relative;
+}
+
+.click-message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: red;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+
 .row-display .card-img-top {
   object-fit: contain;
   height: 100%;
@@ -260,6 +290,18 @@ h1, h2, h3, h4, h5, h6{
 	margin-right:auto;
 }
 
+.rounded-border-new{
+	border: solid white 2px;
+	border-radius:16px;
+	width:30%;
+	overflow:hidden;
+	padding:0;
+	margin-bottom:2%;
+	height:fit-content;
+	margin-left:auto;
+	margin-right:auto;
+}
+
 .rounded-border-gal{
 	border: solid white 2px;
 	border-radius:16px;
@@ -282,6 +324,11 @@ h1, h2, h3, h4, h5, h6{
 
 .galleryartwork{
 	width:30%;
+	height:auto;
+}
+
+.galleryartworknew{
+	width:100%;
 	height:auto;
 }
 
@@ -871,8 +918,20 @@ h1, h2, h3, h4, h5, h6{
 		width:20%;
 	}
 	
-	.galleryartwork{
+	.galleryartworknew{
 		width:100%;
 		height:auto;
+	}
+	
+	.rounded-border-new{
+		border: solid white 2px;
+		border-radius:16px;
+		width:80%;
+		overflow:hidden;
+		padding:0;
+		margin-bottom:4%;
+		height:fit-content;
+		margin-left:auto;
+		margin-right:auto;
 	}
 }
