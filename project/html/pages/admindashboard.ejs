@@ -91,6 +91,7 @@
 </div>
 </div>
 </div>
+<br>
 <br><br><br><br><br>
 	<% if (success) { %>
 		<% if (success != "") { %>
@@ -99,6 +100,30 @@
 			<div class="flash error"><%= "" %></div>
 		<% } %>
 	<% } %>
+<div class="block30" style="margin-left:auto;margin-right:auto;">
+	<div class="row-display">
+		<div class="block50">
+			<a href="#galleryupload" style="text-decoration:none;"><div class="rounded-border" id="hover">
+				<div class="col-display">
+					<h3>Total in gallery:</h3>
+					<h3><%= result._gallery.length %></h3>
+				</div>
+			</div></a>
+		</div>
+		<div class="block50">
+			<a href="#slideshowupload" style="text-decoration:none;"><div class="rounded-border" id="hover">
+				<div class="col-display">
+					<h3>Total in slides:</h3>
+					<% if (result){ %>
+					<% let slideshow = result._slideshow; %>
+					<h3><%= slideshow.length %></h3>
+					<% } %>
+				</div>
+			</div></a>
+		</div>
+	</div>
+</div>
+<br>
 <h1>
 Gallery bellow
 </h1>
@@ -113,40 +138,37 @@ Gallery bellow
 <br>
 <% if (result) { %>
 <div class="main-block">
-<div class="col-display" style="width:100%">
+<div style="width:100%; display:flex; flex-wrap:wrap;">
 <% for (let i = result._gallery.length-1; i>-1; i--){ %>
-	<div class="rounded-border-gallery" id="artwork" style="width:90%;">
-		<div class="col-display">
-		<div class="block100">
+<div class="rounded-border-new" id="artwork">
+	<div class="col-display">
+		<div class="block100" style="padding-top:2%;">
 			<form action="/deleteentry/<%= result._gallery[i]._artworkid %>/<%= i %>" method="POST">
 				<button type="submit" class="button-base" id="hover">
 					<span style="color:white;">Delete Entry</span>
 				</button>
 			</form>
 		</div>
-			<div class="row-display">
-				<div class="block25"></div>
-				<div class="block50"><h2><%= result._gallery[i]._title %></h2></div>
-				<div class="block25"></div>
-			</div>
-			<div class="row-display">
-				<div class="block50"><h3><%= result._gallery[i]._client %></h3></div>
-				<div class="block50"><h3><%= result._gallery[i]._datecreated %></h3></div>
-			</div>
-			<div class="block100">
-			<img src="data:<%= result._gallery[i]._mimetype %>;base64,<%= result._gallery[i]._b64 %>" id="imageholder" alt="SteveCreativeInkandArtOostende" class="galleryartwork"></img>
-			</div>
-			<div class="row-display">
-			<div class="block5"></div>
-				<div class="block90">
-				<div class="wrap">
-				<h3><%= result._gallery[i]._description %></h3>
+		<div class="block100" style="height:fit-content;">
+			<div class="col-display" style="height:100%;">
+				<div class="block100" style="border-bottom:solid white 2px;">
+					<h3 class="text1"><%= result._gallery[i]._title %></h3>
 				</div>
+				<div class="block100" style="border-bottom:solid white 2px;">
+					<h4 class="text2"><%= result._gallery[i]._client %></h4>
 				</div>
-			<div class="block5"></div>
+				<div class="block100" style="height:fit-content;">
+					<div class="col-display" style="height:fit-content;">
+						<div class="block100" style="height:fit-content;">
+							<img src="data:<%= result._gallery[i]._mimetype %>;base64,<%= result._gallery[i]._b64 %>" style="object-fit: contain;height:auto;" alt="SteveCreativeInkandArtOostende" class="galleryartworknew"></img>
+						</div>
+						<div class="block100" style="display:flex;align-items:bottom;justify-content:center;padding:2%;">
+							<span class="text3"><%= result._gallery[i]._datecreated %></span>
+						</div>
+					</div>
+				</div>
 			</div>
-		
-		
+		</div>
 		<form action="/modifygallery/<%= result._gallery[i]._artworkid %>/<%= i %>" method="POST" enctype="multipart/form-data">
 			<div class="col-display">
 				<div class="block100">
@@ -181,18 +203,17 @@ Gallery bellow
 					</button>
 				</div>
 			</div>
-		</form>
-		</div>
-		</div>
-	<br>
+		</form>		
+	</div>
+</div>
 <% } %>
 </div>
 </div>
 <% } %>
 <br><br>
-<h1>Gallery Upload
+<h1 id="galleryupload">Gallery Upload
 </h1>
-<div class="main-block" id="galleryupload">
+<div class="main-block">
 	<div class="rounded-border">
 		<form action="/uploadartwork/" method="POST" enctype="multipart/form-data">
 			<div class="col-display">
