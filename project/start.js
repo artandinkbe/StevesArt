@@ -16,7 +16,7 @@ const CryptoJS = require('crypto-js');
 
 module.exports = app;
 
-app.set('port', (process.env.PORT || 5000));
+app.set('port', (process.env.PORT || 4000));
 
 app.use(express.static(__dirname));
 app.use(bodyParser.urlencoded({extended: false}));
@@ -120,7 +120,6 @@ app.post("/uploadartwork", async (req, res) => {
 	
 	let password = req.body.password;
 	let title = req.body.arttitle;
-	let description = req.body.artdescription;
 	let client = req.body.artclient;
 	var artworkid = crypto.randomBytes(20).toString('hex');
 	
@@ -148,7 +147,6 @@ app.post("/uploadartwork", async (req, res) => {
 		var artworkbase = { 
 		
 			_title: title,
-			_description: description,
 			_datecreated: currentDate,
 			_client: client,
 			_path: displaypath,
@@ -516,6 +514,3 @@ async function OnChecker(){
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
-
-
-
