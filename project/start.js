@@ -27,7 +27,7 @@ app.use(fileupload());
 let vars = "StevesArtShopOostende";
 let CID = "634260606963-77s6c4t5i3phmmcqtnj1pth2i7du4r9e.apps.googleusercontent.com";
 let CS = "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";
-let RT = "1//049i1GOK4cEDvCgYIARAAGAQSNwF-L9IrITl98DZ8lmtYo0AUHhlUSHyUg-4xQaC4rJaHt4cPGF0qj0GzzqobmM4JwUC_kLnJChU";
+let RT = "ya29.a0AVvZVsp3e6s17kzx-OvPwb3NbeeJxpi5fA_qiTsPbNqpt-qUymZ5vxKxTXdJm6zM5mRuXqOBHZqyHt8A-sIAAYmqVpF_M6Q1zCowCEbUMDqXxlVg_bUbaR-injWPxNdDqZbbXQug8m8AiCiRB6XmvxBNTeNgaCgYKATsSARMSFQGbdwaIJwv66mtCebZUEdPu-Le6xA0163";
 
 const oneDay = 1000 * 60 * 60 * 24;
 app.use(session({
