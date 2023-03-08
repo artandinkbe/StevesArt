@@ -7,90 +7,29 @@
 	<link rel="stylesheet" href="./css/style.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<script src="js/menu.js"></script>
-	<script>
+<script>
 	
-function liveSearch() {
-  let a = document.querySelectorAll('#artwork')
-  let s = document.getElementById("searchbox").value;
-  let r = document.querySelector('.row-displayz');
-  let d = document.createElement('div');
-  d.classList.add('row', 'row-cols-1', 'row-cols-md-2', 'g-4');
-
-  for (let i = 0; i < a.length; i++) {
-    if (a[i].innerText.toLowerCase().includes(s.toLowerCase())) {
-      //a[i].classList.remove("is-hidden");
-      let b = document.createElement('div');
-      b.classList.add('rounded-border-gal');
-      let c = a[i].querySelector('img');
-      let e = c.cloneNode();
-      e.addEventListener('click', function() {
-        let f = document.createElement('div');
-        f.style.position = 'fixed';
-        f.style.top = 0;
-        f.style.left = 0;
-        f.style.width = '100%';
-        f.style.height = '100%';
-        f.style.backgroundColor = 'rgba(128, 128, 128, 0.9)';
-        f.style.display = 'flex';
-        f.style.justifyContent = 'center';
-        f.style.alignItems = 'center';
-        let g = document.createElement('img');
-        g.src = c.src;
-        g.style.maxWidth = '80%';
-        g.style.maxHeight = '80%';
-        f.appendChild(g);
-        document.body.appendChild(f);
-        let h = document.createElement('button');
-        h.innerHTML = '&times;';
-        h.style.position = 'absolute';
-        h.style.top = '0';
-        h.style.right = '0';
-        h.style.fontSize = '8rem';
-        h.style.marginRight = '3%';
-        h.style.border = 'none';
-        h.style.backgroundColor = 'transparent';
-        h.style.color = '#fff';
-        h.style.cursor = 'pointer';
-        f.appendChild(h);
-        h.addEventListener('click', function() {
-          f.parentNode.removeChild(f);
-        });
-        f.addEventListener('click', function(e) {
-          if (e.target === f) {
-            f.parentNode.removeChild(f);
-          }
-        });
-      });
-      b.style.minWidth = '30%';
-      let t = document.createElement('div');
-      let t1 = a[i].querySelector('.text1').innerHTML;
-      let t2 = a[i].querySelector('.text2').innerHTML;
-      let t3 = a[i].querySelector('.text3').innerHTML;
-      let t4 = a[i].querySelector('.text4').innerHTML;
-      t.innerHTML = '<p>'+t1+'</p>'+'<p>'+t2+'</p><p>'+t3+'</p>'+'<p>'+t4+'</p>';
-      t.classList.add('title');
-      b.appendChild(e);
-      b.appendChild(t);
-      d.appendChild(b);
-    } else {
-      //a[i].classList.add("is-hidden");
-    }
-  }
-
-  r.innerHTML = '';
-  r.appendChild(d);
-
-  d.style.display = 'flex';
-  d.style.flexWrap = 'nowrap';
-  d.style.overflowX = 'scroll';
-  d.style.maxHeight = '80vh';
-  d.style.margin = '0 -3%';
-  d.childNodes.forEach(x => {
-    x.style.margin = '0 3%';
-  });
-}
-
-
+	
+	function liveSearch() {
+	  // Locate the card elements
+	  let cards = document.querySelectorAll('#artwork')
+	  // Locate the search input
+	  let search_query = document.getElementById("searchbox").value;
+	  // Loop through the cards
+	  for (var i = 0; i < cards.length; i++) {
+		// If the text is within the card...
+		if(cards[i].innerText.toLowerCase()
+		  // ...and the text matches the search query...
+		  .includes(search_query.toLowerCase())) {
+			// ...remove the `.is-hidden` class.
+			cards[i].classList.remove("is-hidden");
+		} else {
+		  // Otherwise, add the class.
+		  cards[i].classList.add("is-hidden");
+		}
+	  }
+	}
+	
 	</script>
 
 </head>
@@ -105,6 +44,7 @@ function liveSearch() {
 </div>
 </div>
 <br>
+
 <h1>The Gallery</h1>
 
 
@@ -120,37 +60,35 @@ function liveSearch() {
 <br>
 <% if (showcase) { %>
 <div class="main-block">
-<div class="col-display" style="width:100%;">
+<div style="width:100%; display:flex; flex-wrap:wrap;">
 <% for (let i = showcase.length-1; i>-1; i--){ %>
-	<div class="rounded-border" id="artwork">
-		<div class="col-display">
-			<div class="row-display">
-				<div class="block25"></div>
-				<div class="block50"><h2 class="text1"><%= showcase[i]._title %></h2></div>
-				<div class="block25"></div>
-			</div>
-			<div class="row-display">
-				<div class="block50"><h3 class="text2"><%= showcase[i]._client %></h3></div>
-				<div class="block50"><h3 class="text3"><%= showcase[i]._datecreated %></h3></div>
-			</div>
-			<div class="block100">
-	
-			
-		<img src="data:<%= showcase[i]._mimetype %>;base64,<%= showcase[i]._b64 %>" id="imageholder" alt="SteveCreativeInkandArtOostende" class="galleryartwork"></img></div>
-			
-			<div class="row-display">
-			<div class="block5"></div>
-				<div class="block90">
-				<div class="wrap">
-				<h3 class="text4"><%= showcase[i]._description %></h3>
+<div class="rounded-border-new" id="artwork">
+	<div class="col-display">
+		<div class="block100" style="height:fit-content;">
+			<div class="col-display" style="height:100%;">
+				<div class="block100" style="border-bottom:solid white 2px;">
+					<h3 class="text1"><%= showcase[i]._title %></h3>
 				</div>
+				<div class="block100" style="border-bottom:solid white 2px;">
+					<h4 class="text2"><%= showcase[i]._client %></h4>
 				</div>
-			<div class="block5"></div>
+				<div class="block100" style="height:fit-content;">
+					<div class="col-display" style="height:fit-content;">
+						<div class="block100" style="height:fit-content;">
+							<img src="data:<%= showcase[i]._mimetype %>;base64,<%= showcase[i]._b64 %>" style="object-fit: contain;height:auto;" alt="SteveCreativeInkandArtOostende" class="galleryartworknew"></img>
+						</div>
+						<div class="block100" style="display:flex;align-items:bottom;justify-content:center;padding:2%;">
+							<span class="text3"><%= showcase[i]._datecreated %></span>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
+</div>
 	<br>
 <% } %>
+
 </div>
 </div>
 <% } %>
